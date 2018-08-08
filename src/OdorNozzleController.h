@@ -27,6 +27,8 @@ public:
   OdorNozzleController();
   virtual void setup();
 
+  void homeNozzle();
+
 private:
   modular_server::Property properties_[odor_nozzle_controller::constants::PROPERTY_COUNT_MAX];
   modular_server::Parameter parameters_[odor_nozzle_controller::constants::PARAMETER_COUNT_MAX];
@@ -34,6 +36,7 @@ private:
   modular_server::Callback callbacks_[odor_nozzle_controller::constants::CALLBACK_COUNT_MAX];
 
   // Handlers
+  void homeNozzleHandler(modular_server::Pin * pin_ptr);
 
 };
 
