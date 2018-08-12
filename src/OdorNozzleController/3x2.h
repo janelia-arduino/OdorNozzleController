@@ -3,7 +3,7 @@
 //
 //
 // Authors:
-// Peter Polidoro polidorop@janelia.hhmi.org
+// Peter Polidoro peterpolidoro@gmail.com
 // ----------------------------------------------------------------------------
 #ifndef ODOR_NOZZLE_CONTROLLER_3X2_CONSTANTS_H
 #define ODOR_NOZZLE_CONTROLLER_3X2_CONSTANTS_H
