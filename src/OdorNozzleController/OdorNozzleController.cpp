@@ -33,10 +33,10 @@ void OdorNozzleController::setup()
 
   // Add Firmware
   modular_server_.addFirmware(constants::firmware_info,
-                              properties_,
-                              parameters_,
-                              functions_,
-                              callbacks_);
+    properties_,
+    parameters_,
+    functions_,
+    callbacks_);
 
   // Properties
   modular_server::Property & velocity_max_property = modular_server_.property(step_dir_controller::constants::velocity_max_property_name);
@@ -75,7 +75,7 @@ void OdorNozzleController::setup()
   modular_server::Property & stage_position_max_property = modular_server_.property(stage_controller::constants::stage_position_max_property_name);
   stage_position_max_property.setDefaultValue(constants::stage_position_max_default);
 
- // Parameters
+  // Parameters
 
   // Functions
 
