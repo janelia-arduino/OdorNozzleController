@@ -21,7 +21,7 @@ const modular_server::FirmwareInfo firmware_info =
   .name_ptr=&firmware_name,
   .version_major=1,
   .version_minor=0,
-  .version_patch=0,
+  .version_patch=1,
 };
 
 const long channel_count = CHANNEL_COUNT;
@@ -71,7 +71,10 @@ const bool left_switch_stop_enabled_default[CHANNEL_COUNT] =
   true,
 };
 
-const bool right_switches_enabled_default = false;
+const bool right_switches_enabled_default[CONTROLLER_COUNT] =
+{
+  false,
+};
 
 const bool right_switch_stop_enabled_default[CHANNEL_COUNT] =
 {

@@ -4,7 +4,7 @@
 
 * Library Information
   - Name :: OdorNozzleController
-  - Version :: 1.0.0
+  - Version :: 1.0.1
   - License :: BSD
   - URL :: https://github.com/janelia-arduino/OdorNozzleController
   - Author :: Peter Polidoro
@@ -17,6 +17,18 @@
 * API NAMES
 
   #+BEGIN_SRC js
+    {
+      "id": "getApi",
+      "result": {
+        "firmware": [
+          "OdorNozzleController"
+        ],
+        "verbosity": "NAMES",
+        "callbacks": [
+          "homeNozzle"
+        ]
+      }
+    }
   #+END_SRC
 
 * API GENERAL

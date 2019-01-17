@@ -28,6 +28,7 @@ extern const modular_server::FirmwareInfo firmware_info;
 
 enum{CHANNEL_COUNT=1};
 extern const long channel_count;
+enum{CONTROLLER_COUNT=1};
 
 // Pins
 
@@ -45,7 +46,7 @@ extern const long home_velocity_default[CHANNEL_COUNT];
 
 extern const bool left_switch_stop_enabled_default[CHANNEL_COUNT];
 
-extern const bool right_switches_enabled_default;
+extern const bool right_switches_enabled_default[CONTROLLER_COUNT];
 
 extern const bool right_switch_stop_enabled_default[CHANNEL_COUNT];
 
