@@ -27,6 +27,10 @@ public:
   OdorNozzleController();
   virtual void setup();
 
+  void enableNozzle();
+  void disableNozzle();
+  bool nozzleEnabled();
+
   void homeNozzle();
 
 private:

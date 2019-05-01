@@ -19,18 +19,29 @@ CONSTANT_STRING(firmware_name,"OdorNozzleController");
 const modular_server::FirmwareInfo firmware_info =
 {
   .name_ptr=&firmware_name,
-  .version_major=1,
+  .version_major=2,
   .version_minor=0,
-  .version_patch=1,
+  .version_patch=0,
 };
 
-const long channel_count = CHANNEL_COUNT;
+const bool use_drivers = false;
 
 // Pins
 
 // Units
 
 // Properties
+const long channel_count_min = CHANNEL_COUNT;
+const long channel_count_max = CHANNEL_COUNT;
+const long channel_count_default = CHANNEL_COUNT;
+
+const long steps_per_position_units_min = 142;
+const long steps_per_position_units_max = 142;
+const long steps_per_position_units_default[CHANNEL_COUNT] =
+{
+  142,
+};
+
 const long velocity_max_default[CHANNEL_COUNT] =
 {
   1000,
@@ -46,24 +57,29 @@ const long acceleration_max_default[CHANNEL_COUNT] =
   1000,
 };
 
+const ConstantString * const enable_polarity_default[CHANNEL_COUNT] =
+{
+  &step_dir_controller::constants::polarity_high,
+};
+
+const bool step_polarity_inverted_default[CONTROLLER_COUNT] =
+{
+  true,
+};
+
+const bool dir_polarity_inverted_default[CONTROLLER_COUNT] =
+{
+  true,
+};
+
+const ConstantString * const switch_active_polarity_default[CONTROLLER_COUNT] =
+{
+  &step_dir_controller::constants::polarity_high,
+};
+
 const long home_velocity_default[CHANNEL_COUNT] =
 {
   -250,
-};
-
-const bool invert_driver_direction_default[CHANNEL_COUNT] =
-{
-  false,
-};
-
-const long run_current_default[CHANNEL_COUNT] =
-{
-  20,
-};
-
-const long hold_current_default[CHANNEL_COUNT] =
-{
-  10,
 };
 
 const bool left_switch_stop_enabled_default[CHANNEL_COUNT] =
@@ -79,16 +95,6 @@ const bool right_switches_enabled_default[CONTROLLER_COUNT] =
 const bool right_switch_stop_enabled_default[CHANNEL_COUNT] =
 {
   false,
-};
-
-const long stage_position_min_default[CHANNEL_COUNT] =
-{
-  0,
-};
-
-const long stage_position_max_default[CHANNEL_COUNT] =
-{
-  10000,
 };
 
 // Parameters

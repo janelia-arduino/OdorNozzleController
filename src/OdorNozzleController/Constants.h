@@ -27,8 +27,8 @@ extern ConstantString firmware_name;
 extern const modular_server::FirmwareInfo firmware_info;
 
 enum{CHANNEL_COUNT=1};
-extern const long channel_count;
 enum{CONTROLLER_COUNT=1};
+extern const bool use_drivers;
 
 // Pins
 
@@ -36,11 +36,27 @@ enum{CONTROLLER_COUNT=1};
 
 // Properties
 // Property values must be long, double, bool, long[], double[], bool[], char[], ConstantString *, (ConstantString *)[]
+extern const long channel_count_min;
+extern const long channel_count_max;
+extern const long channel_count_default;
+
+extern const long steps_per_position_units_min;
+extern const long steps_per_position_units_max;
+extern const long steps_per_position_units_default[CHANNEL_COUNT];
+
 extern const long velocity_max_default[CHANNEL_COUNT];
 
 extern const long velocity_min_default[CHANNEL_COUNT];
 
 extern const long acceleration_max_default[CHANNEL_COUNT];
+
+extern const ConstantString * const enable_polarity_default[CHANNEL_COUNT];
+
+extern const bool step_polarity_inverted_default[CONTROLLER_COUNT];
+
+extern const bool dir_polarity_inverted_default[CONTROLLER_COUNT];
+
+extern const ConstantString * const switch_active_polarity_default[CONTROLLER_COUNT];
 
 extern const long home_velocity_default[CHANNEL_COUNT];
 
@@ -50,19 +66,12 @@ extern const bool right_switches_enabled_default[CONTROLLER_COUNT];
 
 extern const bool right_switch_stop_enabled_default[CHANNEL_COUNT];
 
-extern const bool invert_driver_direction_default[CHANNEL_COUNT];
-
-extern const long run_current_default[CHANNEL_COUNT];
-
-extern const long hold_current_default[CHANNEL_COUNT];
-
-extern const long stage_position_min_default[CHANNEL_COUNT];
-
-extern const long stage_position_max_default[CHANNEL_COUNT];
-
 // Parameters
 
 // Functions
+extern ConstantString enable_nozzle_function_name;
+extern ConstantString disable_nozzle_function_name;
+extern ConstantString nozzle_enabled_function_name;
 
 // Callbacks
 extern ConstantString home_nozzle_callback_name;

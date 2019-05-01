@@ -17,7 +17,7 @@ OdorNozzleController::OdorNozzleController()
 void OdorNozzleController::setup()
 {
   // Parent Setup
-  StageController::setup();
+  StageController::setup(constants::use_drivers);
 
   // Reset Watchdog
   resetWatchdog();
@@ -39,6 +39,14 @@ void OdorNozzleController::setup()
     callbacks_);
 
   // Properties
+  modular_server::Property & channel_count_property = modular_server_.property(step_dir_controller::constants::channel_count_property_name);
+  channel_count_property.setDefaultValue(constants::channel_count_default);
+  channel_count_property.setRange(constants::channel_count_min,constants::channel_count_max);
+
+  modular_server::Property & steps_per_position_units_property = modular_server_.property(step_dir_controller::constants::steps_per_position_units_property_name);
+  steps_per_position_units_property.setDefaultValue(constants::steps_per_position_units_default);
+  steps_per_position_units_property.setRange(constants::steps_per_position_units_min,constants::steps_per_position_units_max);
+
   modular_server::Property & velocity_max_property = modular_server_.property(step_dir_controller::constants::velocity_max_property_name);
   velocity_max_property.setDefaultValue(constants::velocity_max_default);
 
@@ -47,6 +55,18 @@ void OdorNozzleController::setup()
 
   modular_server::Property & acceleration_max_property = modular_server_.property(step_dir_controller::constants::acceleration_max_property_name);
   acceleration_max_property.setDefaultValue(constants::acceleration_max_default);
+
+  modular_server::Property & enable_polarity_property = modular_server_.property(step_dir_controller::constants::enable_polarity_property_name);
+  enable_polarity_property.setDefaultValue(constants::enable_polarity_default);
+
+  modular_server::Property & step_polarity_inverted_property = modular_server_.property(step_dir_controller::constants::step_polarity_inverted_property_name);
+  step_polarity_inverted_property.setDefaultValue(constants::step_polarity_inverted_default);
+
+  modular_server::Property & dir_polarity_inverted_property = modular_server_.property(step_dir_controller::constants::dir_polarity_inverted_property_name);
+  dir_polarity_inverted_property.setDefaultValue(constants::dir_polarity_inverted_default);
+
+  modular_server::Property & switch_active_polarity_property = modular_server_.property(step_dir_controller::constants::switch_active_polarity_property_name);
+  switch_active_polarity_property.setDefaultValue(constants::switch_active_polarity_default);
 
   modular_server::Property & home_velocity_property = modular_server_.property(step_dir_controller::constants::home_velocity_property_name);
   home_velocity_property.setDefaultValue(constants::home_velocity_default);
@@ -59,21 +79,6 @@ void OdorNozzleController::setup()
 
   modular_server::Property & right_switch_stop_enabled_property = modular_server_.property(step_dir_controller::constants::right_switch_stop_enabled_property_name);
   right_switch_stop_enabled_property.setDefaultValue(constants::right_switch_stop_enabled_default);
-
-  modular_server::Property & invert_driver_direction_property = modular_server_.property(stepper_controller::constants::invert_driver_direction_property_name);
-  invert_driver_direction_property.setDefaultValue(constants::invert_driver_direction_default);
-
-  modular_server::Property & run_current_property = modular_server_.property(stepper_controller::constants::run_current_property_name);
-  run_current_property.setDefaultValue(constants::run_current_default);
-
-  modular_server::Property & hold_current_property = modular_server_.property(stepper_controller::constants::hold_current_property_name);
-  hold_current_property.setDefaultValue(constants::hold_current_default);
-
-  modular_server::Property & stage_position_min_property = modular_server_.property(stage_controller::constants::stage_position_min_property_name);
-  stage_position_min_property.setDefaultValue(constants::stage_position_min_default);
-
-  modular_server::Property & stage_position_max_property = modular_server_.property(stage_controller::constants::stage_position_max_property_name);
-  stage_position_max_property.setDefaultValue(constants::stage_position_max_default);
 
   // Parameters
 
