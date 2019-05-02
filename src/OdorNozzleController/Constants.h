@@ -18,7 +18,7 @@ namespace constants
 //MAX values must be >= 1, >= created/copied count, < RAM limit
 enum{PROPERTY_COUNT_MAX=1};
 enum{PARAMETER_COUNT_MAX=1};
-enum{FUNCTION_COUNT_MAX=1};
+enum{FUNCTION_COUNT_MAX=9};
 enum{CALLBACK_COUNT_MAX=1};
 
 extern ConstantString device_name;
@@ -28,11 +28,13 @@ extern const modular_server::FirmwareInfo firmware_info;
 
 enum{CHANNEL_COUNT=1};
 enum{CONTROLLER_COUNT=1};
-extern const bool use_drivers;
+extern const size_t nozzle_channel;
 
 // Pins
 
 // Units
+extern ConstantString degrees_units;
+extern ConstantString degrees_per_second_units;
 
 // Properties
 // Property values must be long, double, bool, long[], double[], bool[], char[], ConstantString *, (ConstantString *)[]
@@ -72,6 +74,12 @@ extern const bool right_switch_stop_enabled_default[CHANNEL_COUNT];
 extern ConstantString enable_nozzle_function_name;
 extern ConstantString disable_nozzle_function_name;
 extern ConstantString nozzle_enabled_function_name;
+extern ConstantString move_nozzle_by_function_name;
+extern ConstantString move_nozzle_to_function_name;
+extern ConstantString move_nozzle_at_function_name;
+extern ConstantString stop_nozzle_function_name;
+extern ConstantString get_nozzle_position_function_name;
+extern ConstantString get_nozzle_velocity_function_name;
 
 // Callbacks
 extern ConstantString home_nozzle_callback_name;

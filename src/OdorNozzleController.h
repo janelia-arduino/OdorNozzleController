@@ -16,12 +16,13 @@
 
 #include <ModularServer.h>
 #include <ModularDeviceBase.h>
-#include <StageController.h>
+#include <StepDirController.h>
+#include <StepperController.h>
 
 #include "OdorNozzleController/Constants.h"
 
 
-class OdorNozzleController : public StageController
+class OdorNozzleController : public StepDirController
 {
 public:
   OdorNozzleController();
@@ -31,7 +32,19 @@ public:
   void disableNozzle();
   bool nozzleEnabled();
 
-  void homeNozzle();
+  void moveNozzleBy(long position);
+  void moveNozzleTo(long position);
+  void moveNozzleAt(long velocity);
+  void stopNozzle();
+
+  long getNozzlePosition();
+  long getNozzleVelocity();
+
+  bool homeNozzle();
+
+protected:
+  // Handlers
+  virtual void homedHandler(size_t channel);
 
 private:
   modular_server::Property properties_[odor_nozzle_controller::constants::PROPERTY_COUNT_MAX];
@@ -40,6 +53,15 @@ private:
   modular_server::Callback callbacks_[odor_nozzle_controller::constants::CALLBACK_COUNT_MAX];
 
   // Handlers
+  void enableNozzleHandler();
+  void disableNozzleHandler();
+  void nozzleEnabledHandler();
+  void moveNozzleByHandler();
+  void moveNozzleToHandler();
+  void moveNozzleAtHandler();
+  void stopNozzleHandler();
+  void getNozzlePositionHandler();
+  void getNozzleVelocityHandler();
   void homeNozzleHandler(modular_server::Pin * pin_ptr);
 
 };

@@ -1,0 +1,89 @@
+{
+  "id": "getApi",
+  "result": {
+    "firmware": [
+      "OdorNozzleController"
+    ],
+    "verbosity": "GENERAL",
+    "functions": [
+      {
+        "name": "enableNozzle"
+      },
+      {
+        "name": "disableNozzle"
+      },
+      {
+        "name": "nozzleEnabled",
+        "result_info": {
+          "type": "bool"
+        }
+      },
+      {
+        "name": "moveNozzleBy",
+        "parameters": [
+          "position"
+        ]
+      },
+      {
+        "name": "moveNozzleTo",
+        "parameters": [
+          "position"
+        ]
+      },
+      {
+        "name": "moveNozzleAt",
+        "parameters": [
+          "velocity"
+        ]
+      },
+      {
+        "name": "stopNozzle"
+      },
+      {
+        "name": "getNozzlePosition",
+        "result_info": {
+          "type": "long"
+        }
+      },
+      {
+        "name": "getNozzleVelocity",
+        "result_info": {
+          "type": "long"
+        }
+      }
+    ],
+    "callbacks": [
+      {
+        "name": "homeNozzle",
+        "functions": [
+          {
+            "name": "trigger"
+          },
+          {
+            "name": "attachTo",
+            "parameters": [
+              "pin_name",
+              "pin_mode"
+            ]
+          },
+          {
+            "name": "detachFrom",
+            "parameters": [
+              "pin_name"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "pin_name",
+            "type": "string"
+          },
+          {
+            "name": "pin_mode",
+            "type": "string"
+          }
+        ]
+      }
+    ]
+  }
+}

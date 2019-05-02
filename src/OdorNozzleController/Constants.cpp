@@ -24,11 +24,13 @@ const modular_server::FirmwareInfo firmware_info =
   .version_patch=0,
 };
 
-const bool use_drivers = false;
+const size_t nozzle_channel = 0;
 
 // Pins
 
 // Units
+CONSTANT_STRING(degrees_units,"degrees");
+CONSTANT_STRING(degrees_per_second_units,"degrees/s");
 
 // Properties
 const long channel_count_min = CHANNEL_COUNT;
@@ -79,12 +81,12 @@ const ConstantString * const switch_active_polarity_default[CONTROLLER_COUNT] =
 
 const long home_velocity_default[CHANNEL_COUNT] =
 {
-  -250,
+  -36,
 };
 
 const bool left_switch_stop_enabled_default[CHANNEL_COUNT] =
 {
-  true,
+  false,
 };
 
 const bool right_switches_enabled_default[CONTROLLER_COUNT] =
@@ -100,6 +102,15 @@ const bool right_switch_stop_enabled_default[CHANNEL_COUNT] =
 // Parameters
 
 // Functions
+CONSTANT_STRING(enable_nozzle_function_name,"enableNozzle");
+CONSTANT_STRING(disable_nozzle_function_name,"disableNozzle");
+CONSTANT_STRING(nozzle_enabled_function_name,"nozzleEnabled");
+CONSTANT_STRING(move_nozzle_by_function_name,"moveNozzleBy");
+CONSTANT_STRING(move_nozzle_to_function_name,"moveNozzleTo");
+CONSTANT_STRING(move_nozzle_at_function_name,"moveNozzleAt");
+CONSTANT_STRING(stop_nozzle_function_name,"stopNozzle");
+CONSTANT_STRING(get_nozzle_position_function_name,"getNozzlePosition");
+CONSTANT_STRING(get_nozzle_velocity_function_name,"getNozzleVelocity");
 
 // Callbacks
 CONSTANT_STRING(home_nozzle_callback_name,"homeNozzle");

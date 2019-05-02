@@ -17,7 +17,29 @@
 * API NAMES
 
   #+BEGIN_SRC js
-
+    {
+      "id": "getApi",
+      "result": {
+        "firmware": [
+          "OdorNozzleController"
+        ],
+        "verbosity": "NAMES",
+        "functions": [
+          "enableNozzle",
+          "disableNozzle",
+          "nozzleEnabled",
+          "moveNozzleBy",
+          "moveNozzleTo",
+          "moveNozzleAt",
+          "stopNozzle",
+          "getNozzlePosition",
+          "getNozzleVelocity"
+        ],
+        "callbacks": [
+          "homeNozzle"
+        ]
+      }
+    }
   #+END_SRC
 
 * API GENERAL
@@ -31,10 +53,6 @@
   [[https://github.com/janelia-arduino/ModularDeviceBase]]
 
   [[https://github.com/janelia-arduino/StepDirController]]
-
-  [[https://github.com/janelia-arduino/StepperController]]
-
-  [[https://github.com/janelia-arduino/StageController]]
 
 * Clients
 
