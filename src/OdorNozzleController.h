@@ -41,6 +41,8 @@ public:
   long getNozzleVelocity();
 
   bool homeNozzle();
+  bool nozzleHoming();
+  bool nozzleHomed();
 
 protected:
   // Handlers
@@ -63,6 +65,8 @@ private:
   void getNozzlePositionHandler();
   void getNozzleVelocityHandler();
   void homeNozzleHandler(modular_server::Pin * pin_ptr);
+  void nozzleHomingHandler();
+  void nozzleHomedHandler();
 
 };
 

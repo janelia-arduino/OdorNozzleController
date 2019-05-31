@@ -50,6 +50,18 @@
         "result_info": {
           "type": "long"
         }
+      },
+      {
+        "name": "nozzleHoming",
+        "result_info": {
+          "type": "bool"
+        }
+      },
+      {
+        "name": "nozzleHomed",
+        "result_info": {
+          "type": "bool"
+        }
       }
     ],
     "callbacks": [

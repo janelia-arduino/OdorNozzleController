@@ -129,11 +129,21 @@ void OdorNozzleController::setup()
   get_nozzle_velocity_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&OdorNozzleController::getNozzleVelocityHandler));
   get_nozzle_velocity_function.setResultTypeLong();
 
+  modular_server::Function & nozzle_homing_velocity_function = modular_server_.createFunction(constants::nozzle_homing_function_name);
+  nozzle_homing_velocity_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&OdorNozzleController::nozzleHomingHandler));
+  nozzle_homing_velocity_function.setResultTypeBool();
+
+  modular_server::Function & nozzle_homed_velocity_function = modular_server_.createFunction(constants::nozzle_homed_function_name);
+  nozzle_homed_velocity_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&OdorNozzleController::nozzleHomedHandler));
+  nozzle_homed_velocity_function.setResultTypeBool();
+
   // Callbacks
   modular_server::Callback & home_nozzle_callback = modular_server_.createCallback(constants::home_nozzle_callback_name);
   home_nozzle_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&OdorNozzleController::homeNozzleHandler));
   home_nozzle_callback.attachTo(modular_device_base::constants::bnc_a_pin_name,modular_server::constants::pin_mode_interrupt_falling);
   home_nozzle_callback.attachTo(modular_device_base::constants::btn_a_pin_name,modular_server::constants::pin_mode_interrupt_falling);
+
+  reinitialize();
 }
 
 void OdorNozzleController::enableNozzle()
@@ -185,6 +195,16 @@ bool OdorNozzleController::homeNozzle()
 {
   temporarilyEnableHomeSwitch(constants::nozzle_channel);
   return home(constants::nozzle_channel);
+}
+
+bool OdorNozzleController::nozzleHoming()
+{
+  return homing(constants::nozzle_channel);
+}
+
+bool OdorNozzleController::nozzleHomed()
+{
+  return homed(constants::nozzle_channel);
 }
 
 void OdorNozzleController::homedHandler(size_t channel)
@@ -267,4 +287,16 @@ void OdorNozzleController::getNozzleVelocityHandler()
 void OdorNozzleController::homeNozzleHandler(modular_server::Pin * pin_ptr)
 {
   homeNozzle();
+}
+
+void OdorNozzleController::nozzleHomingHandler()
+{
+  bool nozzle_homing = nozzleHoming();
+  modular_server_.response().returnResult(nozzle_homing);
+}
+
+void OdorNozzleController::nozzleHomedHandler()
+{
+  bool nozzle_homed = nozzleHomed();
+  modular_server_.response().returnResult(nozzle_homed);
 }
