@@ -46,9 +46,21 @@
         }
       },
       {
+        "name": "nozzleAtTargetPosition",
+        "result_info": {
+          "type": "bool"
+        }
+      },
+      {
         "name": "getNozzleVelocity",
         "result_info": {
           "type": "long"
+        }
+      },
+      {
+        "name": "nozzleAtTargetVelocity",
+        "result_info": {
+          "type": "bool"
         }
       },
       {

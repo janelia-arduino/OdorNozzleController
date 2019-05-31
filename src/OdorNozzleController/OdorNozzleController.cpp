@@ -125,9 +125,17 @@ void OdorNozzleController::setup()
   get_nozzle_position_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&OdorNozzleController::getNozzlePositionHandler));
   get_nozzle_position_function.setResultTypeLong();
 
+  modular_server::Function & nozzle_at_target_position_function = modular_server_.createFunction(constants::nozzle_at_target_position_function_name);
+  nozzle_at_target_position_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&OdorNozzleController::nozzleAtTargetPositionHandler));
+  nozzle_at_target_position_function.setResultTypeBool();
+
   modular_server::Function & get_nozzle_velocity_function = modular_server_.createFunction(constants::get_nozzle_velocity_function_name);
   get_nozzle_velocity_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&OdorNozzleController::getNozzleVelocityHandler));
   get_nozzle_velocity_function.setResultTypeLong();
+
+  modular_server::Function & nozzle_at_target_velocity_function = modular_server_.createFunction(constants::nozzle_at_target_velocity_function_name);
+  nozzle_at_target_velocity_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&OdorNozzleController::nozzleAtTargetVelocityHandler));
+  nozzle_at_target_velocity_function.setResultTypeBool();
 
   modular_server::Function & nozzle_homing_velocity_function = modular_server_.createFunction(constants::nozzle_homing_function_name);
   nozzle_homing_velocity_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&OdorNozzleController::nozzleHomingHandler));
@@ -186,9 +194,19 @@ long OdorNozzleController::getNozzlePosition()
   return getPosition(constants::nozzle_channel);
 }
 
+bool OdorNozzleController::nozzleAtTargetPosition()
+{
+  return atTargetPosition(constants::nozzle_channel);
+}
+
 long OdorNozzleController::getNozzleVelocity()
 {
   return getVelocity(constants::nozzle_channel);
+}
+
+bool OdorNozzleController::nozzleAtTargetVelocity()
+{
+  return atTargetVelocity(constants::nozzle_channel);
 }
 
 bool OdorNozzleController::homeNozzle()
@@ -278,10 +296,22 @@ void OdorNozzleController::getNozzlePositionHandler()
   modular_server_.response().returnResult(nozzle_position);
 }
 
+void OdorNozzleController::nozzleAtTargetPositionHandler()
+{
+  bool nozzle_at_target_position = nozzleAtTargetPosition();
+  modular_server_.response().returnResult(nozzle_at_target_position);
+}
+
 void OdorNozzleController::getNozzleVelocityHandler()
 {
   long nozzle_velocity = getNozzleVelocity();
   modular_server_.response().returnResult(nozzle_velocity);
+}
+
+void OdorNozzleController::nozzleAtTargetVelocityHandler()
+{
+  bool nozzle_at_target_velocity = nozzleAtTargetVelocity();
+  modular_server_.response().returnResult(nozzle_at_target_velocity);
 }
 
 void OdorNozzleController::homeNozzleHandler(modular_server::Pin * pin_ptr)

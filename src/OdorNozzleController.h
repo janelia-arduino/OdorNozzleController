@@ -38,7 +38,9 @@ public:
   void stopNozzle();
 
   long getNozzlePosition();
+  bool nozzleAtTargetPosition();
   long getNozzleVelocity();
+  bool nozzleAtTargetVelocity();
 
   bool homeNozzle();
   bool nozzleHoming();
@@ -63,7 +65,9 @@ private:
   void moveNozzleAtHandler();
   void stopNozzleHandler();
   void getNozzlePositionHandler();
+  void nozzleAtTargetPositionHandler();
   void getNozzleVelocityHandler();
+  void nozzleAtTargetVelocityHandler();
   void homeNozzleHandler(modular_server::Pin * pin_ptr);
   void nozzleHomingHandler();
   void nozzleHomedHandler();

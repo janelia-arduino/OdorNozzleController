@@ -20,7 +20,7 @@ const modular_server::FirmwareInfo firmware_info =
 {
   .name_ptr=&firmware_name,
   .version_major=2,
-  .version_minor=1,
+  .version_minor=2,
   .version_patch=0,
 };
 
@@ -110,7 +110,9 @@ CONSTANT_STRING(move_nozzle_to_function_name,"moveNozzleTo");
 CONSTANT_STRING(move_nozzle_at_function_name,"moveNozzleAt");
 CONSTANT_STRING(stop_nozzle_function_name,"stopNozzle");
 CONSTANT_STRING(get_nozzle_position_function_name,"getNozzlePosition");
+CONSTANT_STRING(nozzle_at_target_position_function_name,"nozzleAtTargetPosition");
 CONSTANT_STRING(get_nozzle_velocity_function_name,"getNozzleVelocity");
+CONSTANT_STRING(nozzle_at_target_velocity_function_name,"nozzleAtTargetVelocity");
 CONSTANT_STRING(nozzle_homing_function_name,"nozzleHoming");
 CONSTANT_STRING(nozzle_homed_function_name,"nozzleHomed");
 

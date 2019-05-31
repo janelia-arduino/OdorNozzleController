@@ -18,7 +18,7 @@ namespace constants
 //MAX values must be >= 1, >= created/copied count, < RAM limit
 enum{PROPERTY_COUNT_MAX=1};
 enum{PARAMETER_COUNT_MAX=1};
-enum{FUNCTION_COUNT_MAX=11};
+enum{FUNCTION_COUNT_MAX=13};
 enum{CALLBACK_COUNT_MAX=1};
 
 extern ConstantString device_name;
@@ -79,7 +79,9 @@ extern ConstantString move_nozzle_to_function_name;
 extern ConstantString move_nozzle_at_function_name;
 extern ConstantString stop_nozzle_function_name;
 extern ConstantString get_nozzle_position_function_name;
+extern ConstantString nozzle_at_target_position_function_name;
 extern ConstantString get_nozzle_velocity_function_name;
+extern ConstantString nozzle_at_target_velocity_function_name;
 extern ConstantString nozzle_homing_function_name;
 extern ConstantString nozzle_homed_function_name;
 
