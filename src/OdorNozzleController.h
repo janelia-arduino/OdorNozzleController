@@ -3,7 +3,7 @@
 //
 //
 // Authors:
-// Peter Polidoro peterpolidoro@gmail.com
+// Peter Polidoro peter@polidoro.io
 // ----------------------------------------------------------------------------
 #ifndef ODOR_NOZZLE_CONTROLLER_H
 #define ODOR_NOZZLE_CONTROLLER_H
